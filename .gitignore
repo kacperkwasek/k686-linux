@@ -1,0 +1,8 @@
+# Vendor installer and anything extracted from it
+*.exe
+extracted/
+
+# Editor / OS clutter
+.DS_Store
+*~
+*.swp

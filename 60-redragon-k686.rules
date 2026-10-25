@@ -1,0 +1,13 @@
+# Redragon K686-RGB-PRO (Eisa) – dostęp do /dev/hidraw* bez sudo dla zalogowanego użytkownika.
+# Instalacja:
+#   sudo cp 60-redragon-k686.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload-rules
+#   sudo udevadm trigger --subsystem-match=hidraw
+#   (albo odłącz i podłącz ponownie odbiornik)
+# Numer pliku musi być < 73, żeby TAG "uaccess" zadziałał (systemd-logind / 73-seat-late.rules).
+
+# Odbiornik 2.4G "CX 2.4G Wireless Receiver" (z KB.ini: VID_Wireless/PID_Wireless)
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3554", ATTRS{idProduct}=="fa09", TAG+="uaccess"
+
+# Tryb przewodowy (z KB.ini: VID/PID, chip SinoWealth) – protokół inny, strona go jeszcze nie obsługuje
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="010c", TAG+="uaccess"
